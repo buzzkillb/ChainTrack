@@ -13,6 +13,7 @@
     <%= render 'wallet_fields', f: w, remove_disabled: w.index == 0 %>
   <% end %>
   <div class="links">
+    <div id="recaptcha"><%= recaptcha_tags %></div>
     <%= f.submit 'Save Changes', class: 'btn btn-primary' %>
     <%= link_to_add_association ' Add More', f, :wallets, class: 'btn btn-secondary' %>
   </div>
