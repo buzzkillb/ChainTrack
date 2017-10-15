@@ -11,6 +11,9 @@
  * It is generally better to create a new file per style scope.
  */
  
- @import "bootstrap";
- @import "app";
- @import "tracks"
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "app";
+@import "tracks";
+@import "wallets";

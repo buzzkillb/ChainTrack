@@ -1,0 +1,10 @@
+<ul class="list-group list-group-flush">
+  <li class="list-group-item bg-light"><%= @wallet.total_earned %> CHC</li>
+  <li class="list-group-item bg-light"><%= number_to_currency(@wallet.usd_earned) %></li>
+  <li class="list-group-item bg-light">
+    <button type="button" class="btn btn-primary" data-container="body"
+    data-toggle="popover" data-placement="bottom" data-content="<%= @wallet.address %>">
+      Show Address
+    </button>
+  </li>
+</ul>

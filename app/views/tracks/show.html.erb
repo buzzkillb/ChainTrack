@@ -1,3 +1,9 @@
+<div class="alert alert-primary alert-dismissible fade show" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <i class="fa fa-bookmark" aria-hidden="true"></i> Bookmark this page to easily access it in the future!
+</div>
 <div class="row cards">
   <% @track.wallets.each_with_index do |wallet, index| %>
     <div class="col-lg-3 col-md-4 col-sm-5">
@@ -5,17 +11,7 @@
       data-toggle="tooltip" title="<%= wallet.description %>" data-id="<%= wallet.id %>">
         <div class="card-header">Wallet <%= index + 1 %></div>
         <div class="card-body">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item bg-light">100 CHC</li>
-            <li class="list-group-item bg-light">$23.34</li>
-            <li class="list-group-item bg-light">BTC 0.0002</li>
-            <li class="list-group-item bg-light">
-              <button type="button" class="btn btn-primary" data-container="body"
-              data-toggle="popover" data-placement="bottom" data-content="<%= wallet.address %>">
-                Show Address
-              </button>
-            </li>
-          </ul>
+          <i class="fa fa-refresh fa-spin fa-2x fa-fw"></i>
         </div>
       </div>
     </div>
