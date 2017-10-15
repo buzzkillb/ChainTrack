@@ -1,0 +1,9 @@
+<div class="nested-fields">
+  <div class="form-group wallet-form">
+    <%= f.label :address %>
+    <%= f.text_field :address, class: 'form-control' %>
+    <%= f.label :description %>
+    <%= f.text_field :description, class: 'form-control', placeholder: 'Optional' %>
+    <%= link_to_remove_association "Remove", f unless local_assigns[:remove_disabled] %>
+  </div>
+</div>

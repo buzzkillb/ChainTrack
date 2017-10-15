@@ -1,6 +1,6 @@
 <% if @track.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@track.errors.count, "error") %> prohibited this track from being saved:</h2>
+  <div id="error_explanation" class="alert alert-danger" role="alert">
+    <h3>This form contains <%= pluralize(@track.errors.count, "error") %>:</h3>
     <ul>
     <% @track.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
@@ -10,12 +10,10 @@
 <% end %>
 <%= form_for @track do |f| %>
   <%= f.fields_for :wallets do |w| %>
-    <div class="form-group wallet-form">
-      <%= w.label :address %>
-      <%= w.text_field :address, class: 'form-control' %>
-      <%= w.label :description %>
-      <%= w.text_field :description, class: 'form-control', placeholder: 'Optional' %>
-    </div>
+    <%= render 'wallet_fields', f: w, remove_disabled: w.index == 0 %>
   <% end %>
-  <%= f.submit 'Start Tracking', class: 'btn btn-primary' %>
+  <div class="links">
+    <%= f.submit 'Start Tracking', class: 'btn btn-primary' %>
+    <%= link_to_add_association ' Add More', f, :wallets, class: 'btn btn-secondary' %>
+  </div>
 <% end %>
