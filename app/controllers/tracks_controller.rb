@@ -12,10 +12,15 @@ class TracksController < ApplicationController
   def create
     @track = Track.new(track_params)
     if @track.save
-      redirect_to "/#{@track.token}"
+      redirect_to "/#{@track.token}", notice: 'Bookmark this page to easily access it in the future!'
     else
       render action: 'new'
     end
+  end
+  
+  def summary
+    @track = Track.find_by_token params[:id]
+    render layout: false
   end
   
   private

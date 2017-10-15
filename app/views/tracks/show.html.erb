@@ -1,8 +1,5 @@
-<div class="alert alert-primary alert-dismissible fade show" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <i class="fa fa-bookmark" aria-hidden="true"></i> Bookmark this page to easily access it in the future!
+<div id="summary" class="alert alert-primary" role="alert" data-token="<%= @track.token %>">
+  <i class="fa fa-refresh fa-spin fa-1x fa-fw"></i>
 </div>
 <div class="row cards">
   <% @track.wallets.each_with_index do |wallet, index| %>

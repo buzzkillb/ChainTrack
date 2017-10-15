@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'tracks#new'
   resources :tracks, only: [:new, :show, :create]
   resources :wallets, only: [:show]
+  get '/summary/:id', to: 'tracks#summary'
   get '/:id', to: 'tracks#show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

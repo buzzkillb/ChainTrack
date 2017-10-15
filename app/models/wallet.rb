@@ -2,12 +2,12 @@ class Wallet < ApplicationRecord
   belongs_to :track
   validates :address, presence: true, address: true
   
-  def total_earned
+  def chc_earned
     total_chc - 1000
   end
   
   def usd_earned
-    total_earned * chc_price
+    chc_earned * chc_price
   end
   
   private

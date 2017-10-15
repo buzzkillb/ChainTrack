@@ -2,4 +2,12 @@ class Track < ApplicationRecord
   has_secure_token
   has_many :wallets
   accepts_nested_attributes_for :wallets
+  
+  def total_chc
+    wallets.sum(&:chc_earned)
+  end
+  
+  def total_usd
+    wallets.sum(&:usd_earned)
+  end
 end
