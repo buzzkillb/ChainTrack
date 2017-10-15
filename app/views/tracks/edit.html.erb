@@ -1,0 +1,19 @@
+<% if @track.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger" role="alert">
+    <h3>This form contains <%= pluralize(@track.errors.count, "error") %>:</h3>
+    <ul>
+    <% @track.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for @track, url: { action: 'update', controller: 'tracks', id: @track.token } do |f| %>
+  <%= f.fields_for :wallets do |w| %>
+    <%= render 'wallet_fields', f: w, remove_disabled: w.index == 0 %>
+  <% end %>
+  <div class="links">
+    <%= f.submit 'Save Changes', class: 'btn btn-primary' %>
+    <%= link_to_add_association ' Add More', f, :wallets, class: 'btn btn-secondary' %>
+  </div>
+<% end %>

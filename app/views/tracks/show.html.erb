@@ -14,3 +14,8 @@
     </div>
   <% end %>
 </div>
+<div id="menu">
+  <%= link_to 'Edit', {action: 'edit', controller: 'tracks', id: @track.token}, class: 'btn btn-outline-secondary' %>
+  <%= link_to 'Delete', {action: 'destroy', controller: 'tracks', id: @track.token },
+    method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>
+</div>

@@ -3,12 +3,7 @@ class TracksController < ApplicationController
     @track = Track.new
     @track.wallets.build
   end
-
-  def show
-    @track = Track.find_by_token params[:id]
-    redirect_to :root unless @track.present?
-  end
-
+  
   def create
     @track = Track.new(track_params)
     if @track.save
@@ -17,7 +12,31 @@ class TracksController < ApplicationController
       render action: 'new'
     end
   end
+
+  def edit
+    @track = Track.find_by_token params[:id]
+  end
   
+  def update
+    @track = Track.find_by_token params[:id]
+    if @track.update_attributes(track_params)
+      redirect_to "/#{@track.token}", notice: 'Update successful!'
+    else
+      render action: 'edit'
+    end
+  end
+
+  def show
+    @track = Track.find_by_token params[:id]
+    redirect_to :root unless @track.present?
+  end
+  
+  def destroy
+    track = Track.find_by_token params[:id]
+    track.destroy
+    redirect_to :root, notice: 'Deleted!'
+  end
+
   def summary
     @track = Track.find_by_token params[:id]
     render layout: false
@@ -26,6 +45,6 @@ class TracksController < ApplicationController
   private
   
   def track_params
-    params.require(:track).permit(wallets_attributes: [:address, :description])
+    params.require(:track).permit(wallets_attributes: [:id, :address, :description, :_destroy])
   end
 end
