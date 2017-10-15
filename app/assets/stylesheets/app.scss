@@ -1,0 +1,32 @@
+body {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.header {
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 3rem;
+  }
+  
+  padding-bottom: 1rem;
+  border-bottom: .05rem solid #e5e5e5;
+  margin-bottom: 1rem;
+}
+
+.footer {
+  padding-top: 1.5rem;
+  color: #777;
+  border-top: .05rem solid #e5e5e5;
+}
+
+.card-body {
+  padding-top: 0;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+.card {
+  margin: 0 auto;
+}
