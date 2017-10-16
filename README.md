@@ -1,24 +1,5 @@
-# README
+# About
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ChainTrack is built with Ruby on Rails and is a pretty basic app. I developed this on Ubuntu 17.04 x64 with Ruby 2.1.4. The app uses PostgreSQL for the database and Bootstrap for the styling.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Pricing information is fetched from coinmarketcap.com and the chainblock explorer is used to lookup wallet amounts.
