@@ -1,6 +1,7 @@
 class Wallet < ApplicationRecord
   belongs_to :track
   validates :address, presence: true, address: true
+  default_scope { order('created_at ASC') }
   
   def chc_earned
     total_chc - 1000
