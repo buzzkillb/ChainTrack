@@ -14,9 +14,9 @@ class Wallet < ApplicationRecord
   
   def chc_price
     @chc_price ||= begin
-      uri = URI("https://api.coinmarketcap.com/v1/ticker/chaincoin") 
+      uri = URI("https://api.coinmarketcap.com/v1/ticker/chaincoin/") 
       json = JSON.parse(Net::HTTP.get(uri))
-      json['price_usd']
+      json[0]['price_usd'].to_f
     end
   end
   
