@@ -10,8 +10,6 @@ class Wallet < ApplicationRecord
     chc_earned * chc_price
   end
   
-  private
-  
   def chc_price
     key = 'https://api.coinmarketcap.com/v1/ticker/chaincoin/'
     Rails.cache.fetch(key, expires_in: 1.hour) do
