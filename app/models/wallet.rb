@@ -13,17 +13,17 @@ class Wallet < ApplicationRecord
   private
   
   def chc_price
-    @chc_price ||= begin
-      uri = URI("https://api.coinmarketcap.com/v1/ticker/chaincoin/") 
-      json = JSON.parse(Net::HTTP.get(uri))
+    key = 'https://api.coinmarketcap.com/v1/ticker/chaincoin/'
+    Rails.cache.fetch(key, expires_in: 1.hour) do
+      json = JSON.parse(Net::HTTP.get(URI(key)))
       json[0]['price_usd'].to_f
     end
   end
   
   def total_chc
-    @total_chc ||= begin
-      uri = URI("http://104.238.153.140:3001/ext/getbalance/#{address}") 
-      Net::HTTP.get(uri).to_f
+    key = "http://104.238.153.140:3001/ext/getbalance/#{address}"
+    Rails.cache.fetch(key, expires_in: 1.hour) do
+      Net::HTTP.get(URI(key)).to_f
     end
   end
 end
