@@ -14,9 +14,9 @@ class Wallet < ApplicationRecord
   
   def chc_price
     @chc_price ||= begin
-      uri = URI("https://www.cryptopia.co.nz/api/GetMarket/CHC_USDT") 
+      uri = URI("https://api.coinmarketcap.com/v1/ticker/chaincoin") 
       json = JSON.parse(Net::HTTP.get(uri))
-      json['Data']['AskPrice']
+      json['price_usd']
     end
   end
   
