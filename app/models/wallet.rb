@@ -23,7 +23,7 @@ class Wallet < ApplicationRecord
   def total_chc
     @total_chc ||= begin
       uri = URI("http://104.238.153.140:3001/ext/getbalance/#{address}") 
-      Net::HTTP.get(uri).to_i
+      Net::HTTP.get(uri).to_f
     end
   end
 end

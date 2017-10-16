@@ -1,3 +1,3 @@
 <i class="fa fa-money" aria-hidden="true"></i> <strong>Summary - </strong>
-CHC <%= @track.total_chc %>, 
+CHC <%= number_with_precision(@track.total_chc, precision: 8) %>, 
 <%= number_to_currency(@track.total_usd) %>
