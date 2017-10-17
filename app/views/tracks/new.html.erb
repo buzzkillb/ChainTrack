@@ -17,7 +17,9 @@ Chain Track is a simple way to track your earnings across all of your ChainCoin 
     <%= render 'wallet_fields', f: w, remove_disabled: w.index == 0 %>
   <% end %>
   <div class="links">
-    <div id="recaptcha"><%= recaptcha_tags %></div>
+    <% if Rails.env.production? %>
+      <div id="recaptcha"><%= recaptcha_tags %></div>
+    <% end %>
     <%= f.submit 'Start Tracking', class: 'btn btn-primary' %>
     <%= link_to_add_association ' Add More', f, :wallets, class: 'btn btn-secondary' %>
   </div>

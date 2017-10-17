@@ -6,7 +6,7 @@ class TracksController < ApplicationController
   
   def create
     @track = Track.new(track_params)
-    if verify_recaptcha(model: @track) && @track.save
+    if human?(@track) && @track.save
       redirect_to "/#{@track.token}", notice: 'Bookmark this page to easily access it in the future!'
     else
       render action: 'new'
@@ -19,7 +19,7 @@ class TracksController < ApplicationController
   
   def update
     @track = Track.find_by_token params[:id]
-    if verify_recaptcha(model: @track) && @track.update_attributes(track_params)
+    if human?(@track) && @track.update_attributes(track_params)
       redirect_to "/#{@track.token}", notice: 'Update successful!'
     else
       render action: 'edit'
@@ -46,5 +46,9 @@ class TracksController < ApplicationController
   
   def track_params
     params.require(:track).permit(wallets_attributes: [:id, :address, :description, :_destroy])
+  end
+  
+  def human? model
+    Rails.env.development? || verify_recaptcha(model: model)
   end
 end

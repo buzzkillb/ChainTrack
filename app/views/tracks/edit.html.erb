@@ -1,3 +1,4 @@
+<h4>Edit <i class="fa fa-pencil" aria-hidden="true"></i></h4>
 <% if @track.errors.any? %>
   <div id="error_explanation" class="alert alert-danger" role="alert">
     <h3>This form contains <%= pluralize(@track.errors.count, "error") %>:</h3>
@@ -13,7 +14,9 @@
     <%= render 'wallet_fields', f: w, remove_disabled: w.index == 0 %>
   <% end %>
   <div class="links">
-    <div id="recaptcha"><%= recaptcha_tags %></div>
+    <% if Rails.env.production? %>
+      <div id="recaptcha"><%= recaptcha_tags %></div>
+    <% end %>
     <%= f.submit 'Save Changes', class: 'btn btn-primary' %>
     <%= link_to_add_association ' Add More', f, :wallets, class: 'btn btn-secondary' %>
     <%= link_to 'Cancel', "/#{@track.token}", class: 'btn btn-link' %>
