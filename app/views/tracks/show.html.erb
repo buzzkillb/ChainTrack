@@ -1,6 +1,6 @@
 <h4>Your Earnings <i class="fa fa-money" aria-hidden="true"></i></h4>
 <div id="summary" class="alert alert-primary" role="alert" data-token="<%= @track.token %>">
-  <i class="fa fa-refresh fa-spin fa-1x fa-fw"></i>
+  <i class="fa fa-cog fa-spin fa-1x fa-fw"></i>
 </div>
 <div class="row cards">
   <% @track.wallets.each_with_index do |wallet, index| %>
@@ -11,7 +11,7 @@
           Wallet <%= index + 1 %>
         </div>
         <div class="card-body">
-          <i class="fa fa-refresh fa-spin fa-2x fa-fw"></i>
+          <i class="fa fa-cog fa-spin fa-2x fa-fw"></i>
         </div>
       </div>
     </div>
