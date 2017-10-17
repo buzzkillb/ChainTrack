@@ -40,6 +40,7 @@ $(function () {
     $.get('/wallets/' + id, function (data) {
       $el.find('.card-body').html(data);
       $('[data-toggle="popover"]').popover();
+      $('[data-toggle="tooltip"]').tooltip();
     }).fail(function() {
       $el.find('.card-body').html('<i class="fa fa-frown-o fa-3x" aria-hidden="true"></i>');
     });
