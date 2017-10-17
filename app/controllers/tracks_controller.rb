@@ -6,7 +6,7 @@ class TracksController < ApplicationController
   
   def create
     @track = Track.new(track_params)
-    if human?(@track) && @track.save
+    if @track.save && human?(@track)
       redirect_to "/#{@track.token}", notice: 'Bookmark this page to easily access it in the future!'
     else
       render action: 'new'
@@ -19,7 +19,7 @@ class TracksController < ApplicationController
   
   def update
     @track = Track.find_by_token params[:id]
-    if human?(@track) && @track.update_attributes(track_params)
+    if @track.update_attributes(track_params) && human?(@track)
       redirect_to "/#{@track.token}", notice: 'Update successful!'
     else
       render action: 'edit'
