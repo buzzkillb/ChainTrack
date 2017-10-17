@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'tracks#new'
   resources :tracks
   resources :wallets, only: [:show]
+  get '/terms_and_privacy', to: 'site#terms_and_privacy'
   get '/summary/:id', to: 'tracks#summary'
   get '/:id', to: 'tracks#show'
 
