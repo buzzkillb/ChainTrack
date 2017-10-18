@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016164100) do
+ActiveRecord::Schema.define(version: 20171018150238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,10 +46,19 @@ ActiveRecord::Schema.define(version: 20171016164100) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "currencies", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "unit", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tracks", force: :cascade do |t|
     t.string "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "currency_id"
+    t.index ["currency_id"], name: "index_tracks_on_currency_id"
     t.index ["token"], name: "index_tracks_on_token", unique: true
   end
 
@@ -62,5 +71,6 @@ ActiveRecord::Schema.define(version: 20171016164100) do
     t.index ["track_id"], name: "index_wallets_on_track_id"
   end
 
+  add_foreign_key "tracks", "currencies"
   add_foreign_key "wallets", "tracks"
 end
