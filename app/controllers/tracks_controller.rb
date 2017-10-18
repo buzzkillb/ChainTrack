@@ -45,7 +45,8 @@ class TracksController < ApplicationController
   private
   
   def track_params
-    params.require(:track).permit(wallets_attributes: [:id, :address, :description, :_destroy])
+    params.require(:track).permit(:currency_id,
+      wallets_attributes: [:id, :address, :description, :_destroy])
   end
   
   def human? model
