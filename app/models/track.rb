@@ -11,4 +11,12 @@ class Track < ApplicationRecord
   def total_usd
     wallets.sum(&:usd_earned)
   end
+  
+  def currency_name
+    currency&.name || 'usd'
+  end
+  
+  def currency_unit
+    currency&.unit || '$'
+  end
 end

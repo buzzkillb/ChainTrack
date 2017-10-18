@@ -1,6 +1,6 @@
 <ul class="list-group list-group-flush">
-  <li class="list-group-item bg-light"><%= number_with_precision(@wallet.chc_earned, precision: 8) %> CHC</li>
-  <li class="list-group-item bg-light"><%= number_to_currency(@wallet.usd_earned) %></li>
+  <li class="list-group-item bg-light">CHC <%= number_with_precision(@wallet.chc_earned, precision: 8) %></li>
+  <li class="list-group-item bg-light"><%= number_to_currency(@wallet.usd_earned, unit: @wallet.track.currency_unit) %></li>
   <li class="list-group-item bg-light">
     <button type="button" class="btn btn-primary" data-container="body"
     data-toggle="popover" data-placement="bottom" data-html="true"
