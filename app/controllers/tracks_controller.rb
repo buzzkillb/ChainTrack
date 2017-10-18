@@ -19,7 +19,7 @@ class TracksController < ApplicationController
   
   def update
     @track = Track.find_by_token params[:id]
-    if human?(@track) && @track.update_attributes(track_params)
+    if @track.update_attributes(track_params)
       redirect_to "/#{@track.token}", notice: 'Update successful!'
     else
       render action: 'edit'
