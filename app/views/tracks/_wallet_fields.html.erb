@@ -1,9 +1,15 @@
 <div class="nested-fields">
   <div class="form-group wallet-form">
-    <%= f.label :address %>
+    <div class="row no-gutter">
+      <div class="col-6">
+        <%= f.label :address %>
+      </div>
+      <div class="col-6 right">
+       <%= link_to_remove_association "Remove", f, class: 'btn btn-danger btn-sm remove' unless local_assigns[:remove_disabled] %>
+      </div>
+    </div>
     <%= f.text_field :address, class: 'form-control', placeholder: 'Must have at least 1000 CHC' %>
     <%= f.label :description %>
     <%= f.text_field :description, class: 'form-control', placeholder: 'Optional' %>
-    <%= link_to_remove_association "Remove", f unless local_assigns[:remove_disabled] %>
   </div>
 </div>
