@@ -19,4 +19,8 @@ class Track < ApplicationRecord
   def currency_unit
     currency&.unit || '$'
   end
+  
+  def currency_precision
+    currency&.precision || '2'
+  end
 end
