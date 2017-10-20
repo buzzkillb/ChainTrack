@@ -1,6 +1,7 @@
 class Wallet < ApplicationRecord
   belongs_to :track
   validates :address, presence: true, address: true
+  validates :description, length: { in: 0..64 }
   default_scope { order('created_at ASC') }
   
   def chc_earned
