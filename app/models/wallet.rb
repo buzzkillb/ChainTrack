@@ -4,7 +4,8 @@ class Wallet < ApplicationRecord
   default_scope { order('created_at ASC') }
   
   def chc_earned
-    total_chc - 1000
+    diff = total_chc - 1000
+    diff < 0 ? 0 : diff
   end
   
   def usd_earned
