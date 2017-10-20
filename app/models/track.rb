@@ -21,6 +21,6 @@ class Track < ApplicationRecord
   end
   
   def currency_precision
-    currency&.precision || '2'
+    currency&.precision || 2
   end
 end
