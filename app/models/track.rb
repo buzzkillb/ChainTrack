@@ -8,8 +8,8 @@ class Track < ApplicationRecord
     wallets.sum(&:chc_earned)
   end
   
-  def total_usd
-    wallets.sum(&:usd_earned)
+  def total_secondary
+    wallets.sum(&:secondary_earned)
   end
   
   def currency_name

@@ -5,15 +5,14 @@ class Wallet < ApplicationRecord
   default_scope { order('created_at ASC') }
   
   def chc_earned
-    diff = total_chc - 1000
-    diff < 0 ? 0 : diff
+    [0, total_chc - 1000].max
   end
   
-  def usd_earned
-    chc_earned * chc_price
+  def secondary_earned
+    chc_earned * secondary_price
   end
   
-  def chc_price
+  def secondary_price
     key = "https://api.coinmarketcap.com/v1/ticker/chaincoin/?convert=#{track.currency_name.upcase}"
     Rails.cache.fetch(key, expires_in: 1.hour) do
       json = JSON.parse(Net::HTTP.get(URI(key)))
