@@ -1,12 +1,14 @@
 <div class="row no-gutters">
-  <div class="col-8">
+  <div class="col-6">
     <h4>Your Earnings <i class="fa fa-money" aria-hidden="true"></i></h4>
   </div>
-  <div class="col-4 right">
-    <%= form_for @track, url: { action: 'update', controller: 'tracks', id: @track.token } do |f| %>
-      <%= f.collection_select :currency_id, Currency.all, :id, :name, { prompt: 'Currency' },
-        { onchange: 'this.form.submit()' } %>
-    <% end %>
+  <div class="col-6 right">
+    <div class="inline-block">
+      <%= form_for @track, url: { action: 'update', controller: 'tracks', id: @track.token } do |f| %>
+        <%= f.collection_select :currency_id, Currency.all, :id, :name, { prompt: 'Currency' },
+          { onchange: 'this.form.submit()' } %>
+      <% end %>
+    </div>
   </div>
 </div>
 <div id="summary" class="alert alert-primary" role="alert" data-token="<%= @track.token %>">

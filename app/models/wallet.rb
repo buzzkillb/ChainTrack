@@ -9,14 +9,17 @@ class Wallet < ApplicationRecord
   end
   
   def secondary_earned
-    chc_earned * secondary_price
+    chc_earned * secondary_info[:price]
   end
   
-  def secondary_price
+  def secondary_info
     key = "https://api.coinmarketcap.com/v1/ticker/chaincoin/?convert=#{track.currency_name.upcase}"
     Rails.cache.fetch(key, expires_in: 1.hour) do
       json = JSON.parse(Net::HTTP.get(URI(key)))
-      json[0]["price_#{track.currency_name.downcase}"].to_f
+      { 
+        price: json[0]["price_#{track.currency_name.downcase}"].to_f,
+        change: json[0]['percent_change_24h'].to_f 
+      }
     end
   end
   
