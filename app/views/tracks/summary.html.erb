@@ -3,8 +3,10 @@ CHC <%= number_with_precision(@track.total_chc, precision: 8) %>
 (
 <%= number_to_currency(@track.total_secondary, unit: @track.currency_unit, precision: @track.currency_precision) %>
 @
-<span class="<%= @track.chc_change < 0 ? 'red' : 'green' %>"> 
-  <%= number_to_currency(@track.chc_price, unit: @track.currency_unit, precision: @track.currency_precision) %>/CHC
-  <%= number_to_percentage(@track.chc_change, precision: 2) %>
-</span>
+<%= link_to 'https://coinmarketcap.com/currencies/chaincoin/', target: '_blank', class: 'no-deco' do %>
+  <span class="<%= @track.chc_change < 0 ? 'red' : 'green' %>"> 
+    <%= number_to_currency(@track.chc_price, unit: @track.currency_unit, precision: @track.currency_precision) %>/CHC
+    <%= number_to_percentage(@track.chc_change, precision: 2) %>
+  </span>
+<% end %>
 )
