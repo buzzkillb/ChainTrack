@@ -13,6 +13,10 @@ $(function () {
     }, 1000);
   };
   
+  var toLocalDate = function(el) {
+    el.html(new Date(el.data('date')).toLocaleDateString());
+  };
+  
   $('.clipboard-btn').tooltip({ trigger: 'click', placement: 'bottom' });
   
   clipboard.on('success', function(e) {
@@ -39,10 +43,11 @@ $(function () {
     var id = $el.data('id');
     $.get('/wallets/' + id, function (data) {
       $el.find('.card-body').html(data);
+      toLocalDate($el.find('.utc-date'));
       $('[data-toggle="popover"]').popover();
       $('[data-toggle="tooltip"]').tooltip();
     }).fail(function() {
       $el.find('.card-body').html('<i class="fa fa-frown-o fa-3x" aria-hidden="true"></i>');
-    });
+    })
   });
 });

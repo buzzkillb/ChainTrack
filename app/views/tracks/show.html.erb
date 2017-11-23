@@ -21,6 +21,7 @@
       data-toggle="tooltip" title="<%= wallet.description %>">
         <div class="card-header">
           Wallet <%= index + 1 %>
+          <%= render 'last_changed', wallet: wallet  %>
         </div>
         <div class="card-body">
           <i class="fa fa-cog fa-spin fa-2x fa-fw"></i>

@@ -26,7 +26,17 @@ class Wallet < ApplicationRecord
   def total_chc
     key = "http://104.238.153.140:3001/ext/getbalance/#{address}"
     Rails.cache.fetch(key, expires_in: 1.hour) do
-      Net::HTTP.get(URI(key)).to_f
+      total = Net::HTTP.get(URI(key)).to_f
+      record_total(total)
+      total
+    end
+  end
+  
+  private
+  
+  def record_total total
+    if last_total != total
+      update_attributes(last_total: total, last_changed: Time.current)
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171020033232) do
+ActiveRecord::Schema.define(version: 20171123164050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20171020033232) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "currency_id"
+    t.boolean "include_staked_coins", default: false, null: false
     t.index ["currency_id"], name: "index_tracks_on_currency_id"
     t.index ["token"], name: "index_tracks_on_token", unique: true
   end
@@ -69,6 +70,8 @@ ActiveRecord::Schema.define(version: 20171020033232) do
     t.bigint "track_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "last_total"
+    t.datetime "last_changed"
     t.index ["track_id"], name: "index_wallets_on_track_id"
   end
 
