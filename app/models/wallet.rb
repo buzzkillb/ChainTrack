@@ -35,8 +35,15 @@ class Wallet < ApplicationRecord
   private
   
   def record_total total
-    if last_total != total
+    return unless last_total != total
+    if first_total_update?
+      update_attributes(last_total: total)
+    else
       update_attributes(last_total: total, last_changed: Time.current)
     end
+  end
+  
+  def first_total_update?
+    last_total.nil? && last_changed.nil?
   end
 end

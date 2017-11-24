@@ -1,6 +1,9 @@
-<div class="last-payout">
-  Last payout ≈
-  <span class="utc-date" data-date="<%= wallet.last_changed.strftime('%m/%d/%y %H:%M:%S UTC') %>">
-    <i class="fa fa-cog fa-spin fa-1x fa-fw"></i>
-  </span>
-</div>
+<span class="last-payout">
+  <% if wallet.last_changed.present? %>
+    <span data-toggle="tooltip" data-placement="right" class="badge badge-<%= get_badge_color(wallet) %>" title="Last changed">
+      <span class="utc-date" data-date="<%= wallet.last_changed.strftime('%m/%d/%y %H:%M:%S UTC') %>">
+        <i class="fa fa-cog fa-spin fa-1x fa-fw"></i>
+      </span>
+    </span>
+  <% end %>
+</span>
