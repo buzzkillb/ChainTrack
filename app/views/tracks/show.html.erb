@@ -17,7 +17,7 @@
 <div class="row cards">
   <% @track.wallets.each_with_index do |wallet, index| %>
     <div class="col-lg-3 col-md-4 col-sm-12">
-      <div class="card bg-light mb-3" style="max-width: 20rem;" data-id="<%= wallet.id %>"
+      <div class="card bg-light mb-3" data-id="<%= wallet.id %>"
       data-toggle="tooltip" title="<%= wallet.description %>">
         <div class="card-header">
           Wallet <%= index + 1 %>
