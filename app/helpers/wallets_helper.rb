@@ -1,13 +1,13 @@
 module WalletsHelper
-  def get_badge_color wallet
+  def get_badge_details wallet
     days_since_updated = (Time.current.to_date - wallet.last_changed.to_date).to_i
     case days_since_updated
       when 0..1
-        'success'
+        { icon: 'success', text: 'Fresh' }
       when 2..4
-        'warning'
+        { icon: 'warning', text: 'Aging' }
       else
-        'danger'
+        { icon: 'danger', text: 'Old' }
     end
   end
 end
