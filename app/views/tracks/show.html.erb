@@ -1,3 +1,6 @@
+<% content_for :total_chc do %>
+  - CHC <%= number_with_precision(@track.total_chc, precision: 8) %>
+<% end %>
 <div class="row no-gutters">
   <div class="col-6">
     <h4>Your Earnings <i class="fa fa-money" aria-hidden="true"></i></h4>
