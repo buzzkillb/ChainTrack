@@ -16,4 +16,5 @@
 //= require bootstrap
 //= require cocoon
 //= require clipboard
+//= require moment
 //= require_tree .
