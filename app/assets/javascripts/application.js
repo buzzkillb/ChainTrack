@@ -16,5 +16,5 @@
 //= require bootstrap
 //= require cocoon
 //= require clipboard
-//= require moment
+//= require moment-with-locales
 //= require_tree .
