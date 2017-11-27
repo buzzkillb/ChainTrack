@@ -14,7 +14,7 @@ $(function () {
   };
   
   var toLocalDate = function(el) {
-    var localDate = moment.utc(el.data('date'), 'MM-DD-YY hh:mm:ss').local().format('l');
+    var localDate = moment.utc(el.data('date'), 'MM-DD-YY HH:mm:ss').local().format('l');
     el.html(localDate);
   };
   
