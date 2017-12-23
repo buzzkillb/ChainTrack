@@ -15,6 +15,7 @@ class TracksController < ApplicationController
 
   def edit
     @track = Track.find_by_token params[:id]
+    redirect_to :root unless @track.present?
   end
   
   def update
