@@ -4,16 +4,16 @@ class Track < ApplicationRecord
   belongs_to :currency, optional: true
   accepts_nested_attributes_for :wallets, allow_destroy: true
   
-  def chc_price
+  def dnr_price
     wallets.first.secondary_info[:price]
   end
   
-  def chc_change
+  def dnr_change
     wallets.first.secondary_info[:change]
   end
   
-  def total_chc
-    wallets.sum(&:chc_earned)
+  def total_dnr
+    wallets.sum(&:dnr_earned)
   end
   
   def total_secondary
