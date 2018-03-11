@@ -1,12 +1,12 @@
 <strong>Summary - </strong>
-CHC <%= number_with_precision(@track.total_chc, precision: 8) %>
+DNR <%= number_with_precision(@track.total_dnr, precision: 8) %>
 (
 <%= number_to_currency(@track.total_secondary, unit: @track.currency_unit, precision: @track.currency_precision) %>
 @
-<%= link_to 'https://coinmarketcap.com/currencies/chaincoin/', target: '_blank', class: 'no-deco' do %>
-  <span class="<%= @track.chc_change < 0 ? 'red' : 'green' %>"> 
-    <%= number_to_currency(@track.chc_price, unit: @track.currency_unit, precision: @track.currency_precision) %>/CHC
-    <%= number_to_percentage(@track.chc_change, precision: 2) %>
+<%= link_to 'https://coinmarketcap.com/currencies/denarius-dnr/', target: '_blank', class: 'no-deco' do %>
+  <span class="<%= @track.dnr_change < 0 ? 'red' : 'green' %>"> 
+    <%= number_to_currency(@track.dnr_price, unit: @track.currency_unit, precision: @track.currency_precision) %>/DNR
+    <%= number_to_percentage(@track.dnr_change, precision: 2) %>
   </span>
 <% end %>
 )
