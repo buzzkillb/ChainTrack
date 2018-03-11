@@ -10,7 +10,7 @@ $(function () {
   var hideTooltip = function (btn) {
     setTimeout(function() {
       $(btn).tooltip('dispose');
-    }, 1000);
+    }, 5000);
   };
   
   var toLocalDate = function(el) {
