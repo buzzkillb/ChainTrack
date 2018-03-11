@@ -4,16 +4,16 @@ class Wallet < ApplicationRecord
   validates :description, length: { in: 0..64 }
   default_scope { order('created_at ASC') }
   
-  def chc_earned
-    [0, total_chc - 1000].max
+  def dnr_earned
+    [0, total_dnr - 5000].max
   end
   
   def secondary_earned
-    chc_earned * secondary_info[:price]
+    dnr_earned * secondary_info[:price]
   end
   
   def secondary_info
-    key = "https://api.coinmarketcap.com/v1/ticker/chaincoin/?convert=#{track.currency_name.upcase}"
+    key = "https://api.coinmarketcap.com/v1/ticker/denarius-dnr/?convert=#{track.currency_name.upcase}"
     Rails.cache.fetch(key, expires_in: 1.hour) do
       json = JSON.parse(Net::HTTP.get(URI(key)))
       { 
@@ -23,8 +23,8 @@ class Wallet < ApplicationRecord
     end
   end
   
-  def total_chc
-    key = "http://104.238.153.140:3001/ext/getbalance/#{address}"
+  def total_dnr
+    key = "https://denariusexplorer.org/ext/getbalance/#{address}"
     Rails.cache.fetch(key, expires_in: 1.hour) do
       total = Net::HTTP.get(URI(key)).to_f
       record_total(total)
