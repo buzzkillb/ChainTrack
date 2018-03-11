@@ -25,13 +25,13 @@ default: &default
 
 development:
   <<: *default
-  database: ChainTrack_development
+  database: DNRTrack_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: ChainTrack
+  #username: DNRTrack
 
   # The password associated with the postgres role (username).
   #password:
@@ -59,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: ChainTrack_test
+  database: DNRTrack_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -82,6 +82,6 @@ test:
 #
 production:
   <<: *default
-  database: ChainTrack_production
-  username: ChainTrack
-  password: <%= ENV['CHAINTRACK_DATABASE_PASSWORD'] %>
+  database: DNRTrack_production
+  username: DNRTrack
+  password: <%= ENV['DNRTRACK_DATABASE_PASSWORD'] %>
